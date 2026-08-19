@@ -38,6 +38,14 @@ export const qwenEnv = {
     outputPricePerMTok: toFloat(process.env.QWEN_OUTPUT_PRICE_PER_MTOK, 4),
 };
 
+export const mcpEnv = {
+    exaApiKey: process.env.EXA_API_KEY ?? "",
+    firecrawlApiKey: process.env.FIRECRAWL_API_KEY ?? "",
+    context7Key: process.env.CONTEXT7_KEY ?? "",
+    e2bApiKey: process.env.E2B_API_KEY ?? "",
+    modelId: process.env.MCP_MODEL_ID ?? "claude-sonnet-5",
+};
+
 export type ProviderName = "qwen" | "anthropic";
 
 export const defaultProvider: ProviderName =

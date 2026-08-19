@@ -3,6 +3,7 @@ import type { Application } from "express";
 import cors from "cors";
 import { appEnv } from "@/config/env.js";
 import { promptCachingRouter } from "@/prompt-caching/routes.js";
+import { mcpToolingRouter } from "@/mcp-tooling/routes.js";
 
 const app: Application = express();
 
@@ -17,6 +18,7 @@ app.get("/health", (_req: Request, res: Response) => {
 });
 
 app.use("/api/prompt-caching", promptCachingRouter);
+app.use("/api/mcp-tooling", mcpToolingRouter);
 
 async function startServer(): Promise<void> {
     try {
