@@ -25,7 +25,7 @@ export const appEnv = {
 export const anthropicEnv = {
     apiKey: process.env.ANTHROPIC_API_KEY ?? "",
     baseUrl: process.env.ANTHROPIC_BASE_URL ?? "",
-    modelId: process.env.ANTHROPIC_MODEL_ID ?? "claude-opus-5",
+    modelId: process.env.ANTHROPIC_MODEL_ID ?? "claude-sonnet-5",
     inputPricePerMTok: toFloat(process.env.ANTHROPIC_INPUT_PRICE_PER_MTOK, 5),
     outputPricePerMTok: toFloat(process.env.ANTHROPIC_OUTPUT_PRICE_PER_MTOK, 25),
 };

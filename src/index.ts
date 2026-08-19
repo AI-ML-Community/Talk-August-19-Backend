@@ -1,17 +1,14 @@
-
 import express, { type Request, type Response } from "express";
 import type { Application } from "express";
 import cors from "cors";
-
+import { appEnv } from "@/config/env.js";
+import { promptCachingRouter } from "@/prompt-caching/routes.js";
 
 const app: Application = express();
-const port =4000
+
 app.disable("x-powered-by");
 
-app.use(cors({
-    origin: "*"
-}));
-
+app.use(cors({ origin: appEnv.webOrigins }));
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true, limit: "1mb" }));
 
@@ -19,10 +16,12 @@ app.get("/health", (_req: Request, res: Response) => {
     res.status(200).json({ status: "ok" });
 });
 
+app.use("/api/prompt-caching", promptCachingRouter);
+
 async function startServer(): Promise<void> {
     try {
-        app.listen(port, () => {
-            console.info(`Server running on port ${port}`);
+        app.listen(appEnv.port, () => {
+            console.info(`Server running on port ${appEnv.port}`);
         });
     } catch (error) {
         const message = error instanceof Error ? error.message : String(error);
